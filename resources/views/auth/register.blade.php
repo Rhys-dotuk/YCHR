@@ -26,7 +26,7 @@
 @section('body')
     <div class="register-box">
         <div class="register-logo">
-            <h1> <b>Admin</b>LTE </h1>
+            <h1> <b>HR</b> Manager</h1>
         </div>
 
         <div class="register-box-body">

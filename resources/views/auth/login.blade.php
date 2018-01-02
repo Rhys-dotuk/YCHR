@@ -11,7 +11,7 @@
 @section('body')
     <div class="login-box">
         <div class="login-logo">
-            <h1><b>Admin</b>LTE</h1>
+            <h1><b>HR</b> Manager</h1>
         </div>
         <!-- /.login-logo -->
         <div class="login-box-body">
