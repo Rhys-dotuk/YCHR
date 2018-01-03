@@ -2,7 +2,7 @@
 
 @section('title', 'Dashboard')
 
-@if (Auth::user()->company_name == $company->company_name)
+@if (Auth::user()->company_name == $company->company_name || Auth::user()->account_type == "Z")
 	@section('content_header')
 		<h1>Viewing {{ $company->company_name }}'s Profile</h1><hr>
 	@stop
