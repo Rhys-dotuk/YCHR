@@ -4,6 +4,6 @@ echo phpversion ();
 
 ini_set('eaccelerator.enable', 0);
 
-require __DIR__.'/../public_html/bootstrap/autoload.php';
+require __DIR__.'/../vender/autoload.php';
 
-$app = require_once __DIR__.'/../public_html/bootstrap/app.php';
+$app = require_once __DIR__.'/../bootstrap/app.php';
