@@ -74,58 +74,58 @@ if (App::environment('local')) {
 } elseif (App::environment('live')) { 
 
     // Document area - admin
-    Route::get('YCHR/public/files/{company_name}/admin', 'FileController@admin')->name('file.admin');
+    Route::get('public/files/{company_name}/admin', 'FileController@admin')->name('file.admin');
 
     // Document area - company
-    Route::get('YCHR/public/files/{company_name}/company', 'FileController@company')->name('file.company');
+    Route::get('public/files/{company_name}/company', 'FileController@company')->name('file.company');
 
     // Document area - public
-    Route::get('YCHR/public/files/open', 'FileController@open')->name('file.open');
+    Route::get('public/files/open', 'FileController@open')->name('file.open');
 
     // Document area - local
-    Route::get('YCHR/public/files/{name}/local', 'FileController@local')->name('file.local');
+    Route::get('public/files/{name}/local', 'FileController@local')->name('file.local');
 
     // Document area - crud
     //Route::put('files/{file_name}/destroy', 'FileController@destroy')->name('file.destroy');
-    Route::get('YCHR/public/files/{file_name}/download', 'FileController@download')->name('file.download');
-    Route::post('YCHR/public/files/upload', 'FileController@store')->name('file.store');
-    Route::get('YCHR/public/files/upload', 'FileController@upload')->name('file.upload');
+    Route::get('public/files/{file_name}/download', 'FileController@download')->name('file.download');
+    Route::post('public/files/upload', 'FileController@store')->name('file.store');
+    Route::get('public/files/upload', 'FileController@upload')->name('file.upload');
 
     // Company area - admin only
-    Route::put('YCHR/public/company/{company_name}/edit', 'CompanyController@update')->name('company.update');
-    Route::get('YCHR/public/company/{company_name}/edit', 'CompanyController@edit')->name('company.edit');
-    Route::put('YCHR/public/company/{company_name}', 'CompanyController@destroy')->name('company.destroy');
-    Route::post('YCHR/public/company/create', 'CompanyController@store')->name('company.store');
-    Route::get('YCHR/public/company/create', 'CompanyController@create')->name('company.create');
+    Route::put('public/company/{company_name}/edit', 'CompanyController@update')->name('company.update');
+    Route::get('public/company/{company_name}/edit', 'CompanyController@edit')->name('company.edit');
+    Route::put('public/company/{company_name}', 'CompanyController@destroy')->name('company.destroy');
+    Route::post('public/company/create', 'CompanyController@store')->name('company.store');
+    Route::get('public/company/create', 'CompanyController@create')->name('company.create');
 
     // Company area - open
-    Route::get('YCHR/public/company/{company_name}', 'CompanyController@show')->name('company.show');
-    Route::get('YCHR/public/company', 'CompanyController@index')->name('company.index');
+    Route::get('public/company/{company_name}', 'CompanyController@show')->name('company.show');
+    Route::get('public/company', 'CompanyController@index')->name('company.index');
 
     // User area - admin only
-    Route::put('YCHR/public/users/{id}', 'UserController@destroy')->name('users.destroy');
-    Route::put('YCHR/public/users/{id}/edit', 'UserController@update')->name('users.update');
-    Route::get('YCHR/public/users/{id}/edit', 'UserController@edit')->name('users.edit');
-    Route::get('YCHR/public/users/{id}', 'UserController@show')->name('users.show');
-    Route::get('YCHR/public/users', 'UserController@index')->name('users.index');
+    Route::put('public/users/{id}', 'UserController@destroy')->name('users.destroy');
+    Route::put('public/users/{id}/edit', 'UserController@update')->name('users.update');
+    Route::get('public/users/{id}/edit', 'UserController@edit')->name('users.edit');
+    Route::get('public/users/{id}', 'UserController@show')->name('users.show');
+    Route::get('public/users', 'UserController@index')->name('users.index');
 
     // User area - open
-    Route::put('YCHR/public/profile/{id}/edit', 'UserController@updateprofile')->name('users.updateprofile');
-    Route::get('YCHR/public/profile/{id}/edit', 'UserController@editprofile')->name('users.editprofile');
-    Route::get('YCHR/public/profile/{id}', 'UserController@profile')->name('users.profile');
-    Route::get('YCHR/public/users/list/{company_name}', 'UserController@list')->name('users.list');
+    Route::put('public/profile/{id}/edit', 'UserController@updateprofile')->name('users.updateprofile');
+    Route::get('public/profile/{id}/edit', 'UserController@editprofile')->name('users.editprofile');
+    Route::get('public/profile/{id}', 'UserController@profile')->name('users.profile');
+    Route::get('public/users/list/{company_name}', 'UserController@list')->name('users.list');
 
     // Open areas
-    Route::get('YCHR/public/home', 'PagesController@getHome')->name('home');
+    Route::get('public/home', 'PagesController@getHome')->name('home');
 
-    Route::get('YCHR/public/', function () 
+    Route::get('public/', function () 
     {
         return view('auth/login');
     });
 
     // Auth Routes
-    Route::post('YCHR/public/enrole', 'EnroleController@storeEnrole')->name('user.storeEnrole');
-    Route::get('YCHR/public/enrole', 'EnroleController@enrole')->name('user.enrole');
+    Route::post('public/enrole', 'EnroleController@storeEnrole')->name('user.storeEnrole');
+    Route::get('public/enrole', 'EnroleController@enrole')->name('user.enrole');
 
     Auth::routes();
 }
