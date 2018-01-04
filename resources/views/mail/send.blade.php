@@ -8,7 +8,7 @@
                 font-family: 'Source Sans Pro', sans-serif;
                 background-color: #ECF0F5;
                 text-align: center;
-                length: 100%;
+                height: 450px;
             }
             .header {
                 background-color: #3C8DBC;
