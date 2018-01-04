@@ -13,6 +13,9 @@ $environment = App::environment();
 |
 */
 
+//Document area - doc download confirmation via email
+Route::get('files/email/{id}/{file_name}', 'mailController@send')->name('mail.send');
+
 // Document area - admin
 Route::get('files/{company_name}/admin', 'FileController@admin')->name('file.admin');
 

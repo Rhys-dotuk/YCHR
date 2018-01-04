@@ -3,10 +3,13 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\Controller;
 use App\File;
 use App\User;
 use App\Company;
+use Mail;
+use Session;
 use Storage;
 
 class FileController extends Controller
@@ -17,33 +20,33 @@ class FileController extends Controller
 	}
 
 	public function open()
-    {
+	{
 		$files = File::orderBy('created_at')->paginate(6);
 		return view('file.open')->with('files', $files);
-    }
+	}
 
-    public function local()
-    {
+	public function local()
+	{
 		$files = File::orderBy('created_at')->paginate(6);
 		return view('file.local')->with('files', $files);
-    }
+	}
 
 	public function company($company_name)
-    {
+  	{
 		$files = File::orderBy('created_at')->paginate(6);
 		return view('file.company')->with('files', $files);
-    }
+  	}
 
 	public function admin($company_name)
-    {
+  	{
 		$files = File::orderBy('created_at')->paginate(6);
 		return view('file.admin')->with('files', $files);
-    }
-
+	}
+		 
 	public function upload()
-    {
+  	{
 		return view('file.upload');
-    }
+ 	}
 
 	public function store(Request $request)
 	{
@@ -68,11 +71,13 @@ class FileController extends Controller
 
 	public function download(Request  $request, $file_name)
 	{
+		$id = Auth::user()->id;
 		$file = File::where('file_name', '=', $file_name)->first();
 		$path = storage_path('app/'.$file->folder_name.'/'.$file->file_name);
 
 		return response()->download($path);
 	}
+
 	/*
 	public function destroy(Request  $request, $file_name)
 	{
@@ -80,6 +85,7 @@ class FileController extends Controller
 		$file->file_status = $request->input('file_status');
 		$file->save();
 		
-		return redirect()->route('home');
-	}*/
+		return redirect()->back();
+	}
+	*/
 }
