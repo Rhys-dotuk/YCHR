@@ -30,7 +30,7 @@
         <div class="main">
             <div class="header">
                 <div class="text-area">
-                    <h2 class="title">HR Manager</h2>
+                    <h1 class="title">HR Manager</h1>
                     <hr>
                     <small>This email has been sent to you to inform you that a user has </small>
                     <small>downloaded a file you uploaded to the HR Manager web application.</small>
