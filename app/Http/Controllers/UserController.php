@@ -19,38 +19,50 @@ class UserController extends Controller
     public function index()
     {
 		$users = User::orderBy('company_name')->paginate(6);
-		return view('users.index')->with('users', $users);
+		$company = Company::where('company_name', '=', Auth::user()->company_name)->first();
+
+		return view('users.index')->with('users', $users)->with('company', $company);
     }
 
 	public function list($company_name)
     {
 		$auth = Auth::user();
 		$users = User::where('company_name', '=', $company_name)->get();
-		return view('users.list')->with('users', $users)->with('auth', $auth);
+		$company = Company::where('company_name', '=', Auth::user()->company_name)->first();
+
+		return view('users.list')->with('users', $users)->with('auth', $auth)->with('company', $company);
     }
 
     public function show($id)
     {
 		$user = User::find($id);
-        return view('users.show')->with('user', $user);
+		$company = Company::where('company_name', '=', Auth::user()->company_name)->first();
+
+        return view('users.show')->with('user', $user)->with('company', $company);
     }
 
     public function edit($id)
     {
-        $user = User::find($id);
-        return view('users.edit')->with('user', $user);
+		$user = User::find($id);
+		$company = Company::where('company_name', '=', Auth::user()->company_name)->first();
+
+        return view('users.edit')->with('user', $user)->with('company', $company);
     }
 
 	public function profile($id)
     {
-        $user = Auth::user();
-        return view('users.profile')->with('user', $user);
+		$user = Auth::user();
+		$company = Company::where('company_name', '=', Auth::user()->company_name)->first();
+
+        return view('users.profile')->with('user', $user)->with('company', $company);
     }
 
 	public function editprofile($id)
     {
-        $user = Auth::user();
-        return view('users.editprofile')->with('user', $user);
+		$user = Auth::user();
+		$company = Company::where('company_name', '=', Auth::user()->company_name)->first();
+
+        return view('users.editprofile')->with('user', $user)->with('company', $company);
     }
 
 	public function password()

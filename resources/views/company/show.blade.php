@@ -5,6 +5,7 @@
 @if (Auth::user()->company_name == $company->company_name || Auth::user()->account_type == "Z")
 	@section('content_header')
 		<h1>Viewing {{ $company->company_name }}'s Profile</h1><hr>
+		<img src="{{ asset('app/logo/'.$company->logo) }}" alt="{{ $company->company_name }} Logo" title="{{ $company->company_name }} Logo" style="width: 100px; top: 20px; right:60px; position: absolute;">
 	@stop
 
 	@section('content')

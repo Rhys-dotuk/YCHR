@@ -21,13 +21,17 @@ class CompanyController extends Controller
     public function index()
     {
 		$user = Auth::user();
-	    $companies = Company::orderBy('created_at')->paginate(6);
-		return view('company.index')->with('companies', $companies)->with('user', $user);
+		$companies = Company::orderBy('created_at')->paginate(6);
+		$company = Company::where('company_name', '=', $user->company_name)->first();
+		
+		return view('company.index')->with('companies', $companies)->with('user', $user)->with('company', $company);
 	}
 	
 	public function upload()
 	{
-		return view('company.upload');
+		$company = Company::where('company_name', '=', $user->company_name)->first();
+
+		return view('company.upload')->with('company', $company);
 	}
 
 	public function storeUpload(Request $request)
@@ -53,12 +57,15 @@ class CompanyController extends Controller
 
 	public function create()
 	{
-		return view('company.create');
+		$company = Company::where('company_name', '=', $user->company_name)->first();
+
+		return view('company.create')->with('company', $company);
 	}
 
 	public function show($company_name)
     {
-	    $company = Company::where('company_name', '=', $company_name)->first();
+		$company = Company::where('company_name', '=', $company_name)->first();
+		
 		return view('company.show')->with('company', $company);
     }
 
