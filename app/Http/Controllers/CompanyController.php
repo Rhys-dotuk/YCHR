@@ -22,14 +22,14 @@ class CompanyController extends Controller
     {
 		$user = Auth::user();
 		$companies = Company::orderBy('created_at')->paginate(6);
-		$company = Company::where('company_name', '=', $user->company_name)->first();
+		$company = Company::where('company_name', '=', Auth::user()->company_name)->first();
 		
 		return view('company.index')->with('companies', $companies)->with('user', $user)->with('company', $company);
 	}
 	
 	public function upload()
 	{
-		$company = Company::where('company_name', '=', $user->company_name)->first();
+		$company = Company::where('company_name', '=', Auth::user()->company_name)->first();
 
 		return view('company.upload')->with('company', $company);
 	}
@@ -57,7 +57,7 @@ class CompanyController extends Controller
 
 	public function create()
 	{
-		$company = Company::where('company_name', '=', $user->company_name)->first();
+		$company = Company::where('company_name', '=', Auth::user()->company_name)->first();
 
 		return view('company.create')->with('company', $company);
 	}
