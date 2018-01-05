@@ -4,7 +4,7 @@
 
 @if (Auth::user()->account_type == 'Z')
 	@section('content_header')
-		<h1>View Companies</h1><hr>
+		<h1>View Companies</h1>
 	@stop
 
 	@section('content')

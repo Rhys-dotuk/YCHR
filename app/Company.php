@@ -6,7 +6,9 @@ use Illuminate\Database\Eloquent\Model;
 
 class Company extends Model
 {
-    public function user() 
+	protected $primaryKey = 'company_id';
+
+	public function user() 
 	{
 		return $this->hasMany('App\User');
 	}

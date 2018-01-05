@@ -4,13 +4,13 @@
 
 @section('content_header')
 	<h1>{{ Auth::user()->name }}'s Dashboard</h1>
+	<img src="{{ asset('app/logo/'.$company->logo) }}" alt="{{ $company->company_name }} Logo" title="{{ $company->company_name }} Logo" style="width: 100px; top: 20px; right:60px; position: absolute;">
 @stop
 
 @section('content')
 	<div class="col-xs-6" style="margin: 20px;">
-
 	</div>
-	<div>
+	<div class="row">
 		<div class="col-xs-4">
 			<div class="well edit-form-group" style="background-color: #636B6F; color: #F5F8FA; margin: 20px;">
 				<h4>New Company Files</h4>
@@ -41,5 +41,3 @@
 		</div>
 	</div>
 @stop
-
-<!--comment-->

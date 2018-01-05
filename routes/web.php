@@ -35,9 +35,16 @@ Route::post('files/upload', 'FileController@store')->name('file.store');
 Route::get('files/upload', 'FileController@upload')->name('file.upload');
 
 // Company area - admin only
+// Logo Upload
+Route::get('company/{company_name}/edit/upload', 'CompanyController@upload')->name('company.upload');
+Route::post('company/{company_name}/edit/upload', 'CompanyController@storeUpload')->name('company.storeUpload');
+
+// Company Edit
 Route::put('company/{company_name}/edit', 'CompanyController@update')->name('company.update');
 Route::get('company/{company_name}/edit', 'CompanyController@edit')->name('company.edit');
 Route::put('company/{company_name}', 'CompanyController@destroy')->name('company.destroy');
+
+// Company Create
 Route::post('company/create', 'CompanyController@store')->name('company.store');
 Route::get('company/create', 'CompanyController@create')->name('company.create');
 

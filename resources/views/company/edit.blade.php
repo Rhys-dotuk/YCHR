@@ -68,6 +68,23 @@
 						@endif
 					</div>
 
+					<div class="form-group has-feedback {{ $errors->has('logo') ? ' has-error' : '' }}">
+						<label>Logo:</label>
+						<span class="glyphicon glyphicon-image form-control-feedback"></span>
+						<div>
+							<select id="logo" name="logo" class="form-control">
+									<option value="null">None</option>
+							@foreach($files as $file)
+								@if($file->company_name == Auth::user()->company_name)
+									<option value="{{ $file->file_name }}" >{{ $file->file_name }}</option>
+								@else
+								@endif
+							@endforeach
+							</select> 
+						</div>
+					</div>
+					&emsp;
+
 					<button type="submit" class="btn btn-primary btn-block btn-flat"> Update </button>
 				</form>
 			</div>
@@ -87,6 +104,12 @@
 						<p>{{ date( 'jS F, y', strtotime($company->updated_at)) }}</p>
 						<p>{{ date( 'h:ia', strtotime($company->updated_at)) }}</p>
 					</dl>
+					<div class="row">
+						<form action="{{ route('company.upload', $company->company_name) }}">
+							<button type="submit" class="btn btn-primary btn-block btn-flat">Upload Logo</button>
+						</form>
+					</div>
+					&emsp;
 					<div class="row">
 						<form action="{{ route('company.show', $company->company_name) }}">
 							<button type="submit" class="btn btn-warning btn-block btn-flat">Cancel</button>

@@ -9,6 +9,13 @@
 
 	@section('content')
 		<div class="row">
+			<div class="col-xs-10" style="left: 3px; width: 81.5%;">
+				@if(Session::has('edit_success'))
+					<div class="alert alert-danger" role="alert">
+						<strong> Success: </strong> {{ Session::get('edit_success') }}
+					</div>
+				@endif
+			</div>
 			<div class="col-xs-6">
 				<div class="box-header">
 					<div class="box-tools">
@@ -41,6 +48,10 @@
 							<tr>
 								<th>FAX:</th>
 								<td>{{ $company->fax }}</td>
+							</tr>
+							<tr>
+								<th>Logo File:</th>
+								<td>{{ $company->logo }}</td>
 							</tr>
 						</tbody>
 					</table>

@@ -64,16 +64,16 @@ class FileController extends Controller
 		$file->id = $request->id;
 		$file->save();
 
-		request()->file->move(storage_path('app/'.$file->folder_name), $file->file_name);
+		request()->file->move(public_path('app/'.$file->folder_name), $file->file_name);
 
-		return redirect()->route('file.upload');
+		return redirect()->back();
 	}
 
 	public function download(Request  $request, $file_name)
 	{
 		$id = Auth::user()->id;
 		$file = File::where('file_name', '=', $file_name)->first();
-		$path = storage_path('app/'.$file->folder_name.'/'.$file->file_name);
+		$path = public_path('app/'.$file->folder_name.'/'.$file->file_name);
 
 		return response()->download($path);
 	}

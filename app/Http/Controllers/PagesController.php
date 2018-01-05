@@ -8,7 +8,6 @@ use App\User;
 use App\Company;
 use App\File;
 
-
 class PagesController extends Controller
 {
     public function __construct()
@@ -19,8 +18,9 @@ class PagesController extends Controller
     public function getHome()
     {
 		$user = Auth::user();
-		$company = Company::where('company_name', '=', $user->company_name)->get();
-		$files = File::where('company_name', '=', $user->company_name)->orderBy('created_at')->limit(4)->get();
+		$company = Company::where('company_name', '=', $user->company_name)->first();
+        $files = File::where('company_name', '=', $user->company_name)->orderBy('created_at')->limit(4)->get();
+        
         return view('home')->with('user', $user)->with('company', $company)->with('files', $files);
     }
 }
