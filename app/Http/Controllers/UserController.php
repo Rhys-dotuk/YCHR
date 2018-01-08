@@ -86,7 +86,14 @@ class UserController extends Controller
 			$user = Auth::user();
 
 			Session::flash('edit_unsuccessful', 'Password change was unsuccessful');
-        	return view('users.password')->with('user', $user);
+			return view('users.password')->with('user', $user);
+			
+		} elseif ( ($request->input('new_password')) != ($request->input('confirm_password')) ) {
+
+			$user = Auth::user();
+
+			Session::flash('edit_unsuccessful', 'New passwords did not match');
+			return view('users.password')->with('user', $user);
 
 		} else {
 
