@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Hash;
 use App\User;
 use App\Company;
 use Session;
@@ -65,23 +66,37 @@ class UserController extends Controller
         return view('users.editprofile')->with('user', $user)->with('company', $company);
     }
 
-	public function password()
+	public function password($id)
 	{
-	    $user = Auth::user();
+		$user = Auth::user();
+		
         return view('users.password')->with('user', $user);
 	}
 
-	public function passwordUpdate()
+	public function passwordUpdate(Request $request, $id)
 	{
 		$this->validate($request, array(
-		'password' => 'required',
+			'current_password' => 'required',
+			'new_password' => 'required',
+			'confirm_password' => 'required',
 		));
 
-		$user = User::find($id);
-		$user->password = $request->input('password');
-		$user->save();
+		if ( !(Hash::check($request->input('current_password'), Auth::user()->password)) ) {
 
-		return redirect()->route('users.profile');
+			$user = Auth::user();
+
+			Session::flash('edit_unsuccessful', 'Password change was unsuccessful');
+        	return view('users.password')->with('user', $user);
+
+		} else {
+
+			$user = User::find($id);
+			$user->password = Hash::make($request->input('new_password'));
+			$user->save();
+
+			Session::flash('edit_successful', 'Password change was successful');
+			return redirect()->route('users.editprofile', $id);
+		}
 	}
 
 	public function update(Request $request, $id)

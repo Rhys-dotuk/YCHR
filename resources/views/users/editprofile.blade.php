@@ -9,6 +9,13 @@
 	@stop
 
 	@section('content')
+		<div class="col-xs-10" style="left: 3px; width: 81.5%;">
+			@if(Session::has('edit_successful'))
+				<div class="alert alert-success" role="alert">
+					<strong> Success: </strong> {{ Session::get('edit_successful') }}
+				</div>
+			@endif
+		</div>
 		<div class="col-xs-6" style="margin: 20px;">
 			<div class="register-box-body">
 				<form action="{{ route('users.editprofile', $user->id) }}" method="POST">
@@ -128,7 +135,13 @@
 						<p>{{ date( 'h:ia', strtotime($user->updated_at)) }}</p>
 					</dl>
 					<div class="row">
-						<form action="{{ route('users.profile', $user->id) }}">
+						<form action="{{ route('users.password', Auth::user()->id) }}">
+							<button type="submit" class="btn btn-primary btn-block btn-flat">Change Password</button>
+						</form>
+					</div>
+					&emsp;
+					<div class="row">
+						<form action="{{ route('users.profile', Auth::user()->id) }}">
 							<button type="submit" class="btn btn-warning btn-block btn-flat">Cancel</button>
 						</form>
 					</div>

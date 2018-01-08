@@ -60,6 +60,8 @@ Route::get('users/{id}', 'UserController@show')->name('users.show');
 Route::get('users', 'UserController@index')->name('users.index');
 
 // User area - open
+Route::put('profile/{id}/change-password', 'UserController@passwordUpdate')->name('users.passwordUpdate');
+Route::get('profile/{id}/change-password', 'UserController@password')->name('users.password');
 Route::put('profile/{id}/edit', 'UserController@updateprofile')->name('users.updateprofile');
 Route::get('profile/{id}/edit', 'UserController@editprofile')->name('users.editprofile');
 Route::get('profile/{id}', 'UserController@profile')->name('users.profile');
