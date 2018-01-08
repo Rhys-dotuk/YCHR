@@ -74,7 +74,7 @@
 						<span class="glyphicon glyphicon-image form-control-feedback"></span>
 						<div>
 							<select id="logo" name="logo" class="form-control">
-									<option value="null">None</option>
+									<option value="">None</option>
 							@foreach($files as $file)
 								@if($file->company_name == Auth::user()->company_name)
 									<option value="{{ $file->file_name }}" >{{ $file->file_name }}</option>
