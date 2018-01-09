@@ -32,7 +32,7 @@ class UserController extends Controller
 	public function list($company_name)
     {
 		$auth = Auth::user();
-		$users = User::where('company_name', '=', $company_name)->get();
+		$users = User::where('account_status', '=', 'enabled')->where('company_name', '=', $company_name)->get();
 		$company = Company::where('company_name', '=', Auth::user()->company_name)->first();
 
 		return view('users.list')->with('users', $users)->with('auth', $auth)->with('company', $company);
