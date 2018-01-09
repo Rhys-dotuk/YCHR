@@ -21,7 +21,7 @@ class FileController extends Controller
 
 	public function open()
 	{
-		$files = File::where('file_status', '=', 'enabled')->orderBy('created_at')->get();
+		$files = File::where('file_status', '=', 'enabled')->where('folder_name', '=', 'public')->orderBy('created_at')->get();
 		$company = Company::where('company_name', '=', Auth::user()->company_name)->first();
 
 		return view('file.open')->with('files', $files)->with('company', $company);
@@ -29,7 +29,7 @@ class FileController extends Controller
 
 	public function local()
 	{
-		$files = File::where('file_status', '=', 'enabled')->orderBy('created_at')->get();
+		$files = File::where('file_status', '=', 'enabled')->where('folder_name', '=', 'local')->orderBy('created_at')->get();
 		$company = Company::where('company_name', '=', Auth::user()->company_name)->first();
 
 		return view('file.local')->with('files', $files)->with('company', $company);
@@ -37,7 +37,7 @@ class FileController extends Controller
 
 	public function company($company_name)
   	{
-		$files = File::where('file_status', '=', 'enabled')->orderBy('created_at')->get();
+		$files = File::where('file_status', '=', 'enabled')->where('folder_name', '=', 'company')->orderBy('created_at')->get();
 		$company = Company::where('company_name', '=', Auth::user()->company_name)->first();
 
 		return view('file.company')->with('files', $files)->with('company', $company);
@@ -45,7 +45,7 @@ class FileController extends Controller
 
 	public function admin($company_name)
   	{
-		$files = File::where('file_status', '=', 'enabled')->orderBy('created_at')->get();
+		$files = File::where('file_status', '=', 'enabled')->where('folder_name', '=', 'admin')->orderBy('created_at')->get();
 		$company = Company::where('company_name', '=', Auth::user()->company_name)->first();
 
 		return view('file.admin')->with('files', $files)->with('company', $company);

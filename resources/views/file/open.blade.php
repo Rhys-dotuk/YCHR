@@ -25,25 +25,17 @@
 					</thead>
 					<tbody class="table table-hover">
 						@foreach($files as $file)
-							@if( $file->folder_name == "public" )
-								@if( $file->file_status == "disabled" )
-
-								@else
-									<tr>
-										<td>{{ $file->file_name }}</td>
-										<td>{{ $file->name }}</td>
-										<td>
-											<form action="{{ route('mail.send', [ 'file_name' => $file->file_name, 'id' => Auth::user()->id ]) }}" method="GET">
-												{!! csrf_field() !!}
-												<input type="hidden" name="file_name" value="$file->file_name">
-												<button type="submit" class="btn btn-primary btn-block btn-flat">Download</button>
-											</form>
-										</td>
-									</tr>
-								@endif
-							@else
-
-							@endif
+							<tr>
+								<td>{{ $file->file_name }}</td>
+								<td>{{ $file->name }}</td>
+								<td>
+									<form action="{{ route('mail.send', [ 'file_name' => $file->file_name, 'id' => Auth::user()->id ]) }}" method="GET">
+										{!! csrf_field() !!}
+										<input type="hidden" name="file_name" value="$file->file_name">
+										<button type="submit" class="btn btn-primary btn-block btn-flat">Download</button>
+									</form>
+								</td>
+							</tr>
 						@endforeach
 					</tbody>
 				</table>

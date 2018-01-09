@@ -26,7 +26,7 @@
 				</thead> 
 				<tbody class="table table-hover">
 					@foreach($files as $file)
-						
+						@if( Auth::user()->account_type != "U" && $file->company_name == Auth::user()->company_name)
 							<tr>
 								<td>{{ $file->file_name }}</td>
 								<td>{{ $file->name }}</td>
@@ -38,6 +38,7 @@
 									</form>
 								</td>
 							</tr>
+						@endif
 					@endforeach
 				</tbody>
 			</table>
