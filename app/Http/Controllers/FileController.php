@@ -21,7 +21,7 @@ class FileController extends Controller
 
 	public function open()
 	{
-		$files = File::orderBy('created_at')->paginate(6);
+		$files = File::orderBy('created_at')->get();
 		$company = Company::where('company_name', '=', Auth::user()->company_name)->first();
 
 		return view('file.open')->with('files', $files)->with('company', $company);
@@ -29,7 +29,7 @@ class FileController extends Controller
 
 	public function local()
 	{
-		$files = File::orderBy('created_at')->paginate(6);
+		$files = File::orderBy('created_at')->get();
 		$company = Company::where('company_name', '=', Auth::user()->company_name)->first();
 
 		return view('file.local')->with('files', $files)->with('company', $company);
@@ -37,7 +37,7 @@ class FileController extends Controller
 
 	public function company($company_name)
   	{
-		$files = File::orderBy('created_at')->paginate(6);
+		$files = File::orderBy('created_at')->get();
 		$company = Company::where('company_name', '=', Auth::user()->company_name)->first();
 
 		return view('file.company')->with('files', $files)->with('company', $company);
@@ -45,7 +45,7 @@ class FileController extends Controller
 
 	public function admin($company_name)
   	{
-		$files = File::orderBy('created_at')->paginate(6);
+		$files = File::orderBy('created_at')->get();
 		$company = Company::where('company_name', '=', Auth::user()->company_name)->first();
 
 		return view('file.admin')->with('files', $files)->with('company', $company);
