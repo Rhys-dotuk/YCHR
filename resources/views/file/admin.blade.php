@@ -21,6 +21,7 @@
 						<th>File Name</th>
 						<th>Created by</th>
 						<th></th>
+						<th></th>
 					</tr>
 				</thead> 
 				<tbody class="table table-hover">
@@ -34,6 +35,13 @@
 										{!! csrf_field() !!}
 										<input type="hidden" name="file_name" value="$file->file_name">
 										<button type="submit" class="btn btn-primary btn-block btn-flat">Download</button>
+									</form>
+								</td>
+								<td>
+									<form action="{{ route('file.destroy', [ 'file_id' => $file->file_id]) }}" method="POST">
+										{{ method_field('PUT') }}
+										{!! csrf_field() !!}
+										<button type="submit" class="btn btn-danger btn-block btn-flat">Delete</button>
 									</form>
 								</td>
 							</tr>

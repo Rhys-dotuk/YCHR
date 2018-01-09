@@ -29,7 +29,7 @@ Route::get('files/open', 'FileController@open')->name('file.open');
 Route::get('files/{name}/local', 'FileController@local')->name('file.local');
 
 // Document area - crud
-//Route::put('files/{file_name}/destroy', 'FileController@destroy')->name('file.destroy');
+Route::put('files/{file_id}/destroy', 'FileController@destroy')->name('file.destroy'); // <<<---
 Route::get('files/{file_name}/download', 'FileController@download')->name('file.download');
 Route::post('files/upload', 'FileController@store')->name('file.store');
 Route::get('files/upload', 'FileController@upload')->name('file.upload');

@@ -88,14 +88,12 @@ class FileController extends Controller
 		return response()->download($path);
 	}
 
-	/*
-	public function destroy(Request  $request, $file_name)
+	public function destroy($file_id)
 	{
-		$file = File::where('file_name', '=', $file_name)->first();
-		$file->file_status = $request->input('file_status');
+		$file = File::find($file_id);
+		$file->file_status = 'disabled';
 		$file->save();
 		
 		return redirect()->back();
 	}
-	*/
 }
