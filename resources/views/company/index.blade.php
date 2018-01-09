@@ -12,12 +12,6 @@
 		<div class="col-xs-6">
 			<div class="box-header">
 				<div class="box-tools">
-					<div class="input-group input-group-sm" style="width: 150px; margin: 20px;">
-						<input class="form-control" type="text" id="companySearch" onkeyup="companySearch()" placeholder="Search...">
-						<span class="input-group-btn" style="bottom: 1px;">
-							<button class="btn btn-indo btn-flat btn-primary glyphicon glyphicon-search" onkeyup="companySearch()"></button>
-						</span>
-					</div>
 				</div>
 			</div>
 			<div class="box-body table-responsive no-padding">
