@@ -24,7 +24,11 @@ class CompanyController extends Controller
 		$companies = Company::orderBy('created_at')->paginate(6);
 		$company = Company::where('company_name', '=', Auth::user()->company_name)->first();
 		
-		return view('company.index')->with('companies', $companies)->with('user', $user)->with('company', $company);
+		if ( Auth::user()->account_type == "Z" ) {
+			return view('company.index')->with('companies', $companies)->with('user', $user)->with('company', $company);
+		} else {
+			return redirect()->route('company.show', Auth::user()->company_name);
+		}
 	}
 	
 	public function upload()
