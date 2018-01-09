@@ -21,7 +21,6 @@
 						<th>File Name</th>
 						<th>Created by</th>
 						<th></th>
-						<th></th>
 					</tr>
 				</thead> 
 				<tbody class="table table-hover">
@@ -61,7 +60,12 @@
 
 <script type="text/javascript">
 
+	console.log('1');
+
 	$(document).ready(function() {
+
+		console.log('2');
+
 		$('#tableRecords').DataTable({
 			bFilter: true,
 			bInfo: true,
