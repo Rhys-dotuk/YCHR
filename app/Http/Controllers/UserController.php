@@ -19,10 +19,14 @@ class UserController extends Controller
 
     public function index()
     {
-		$users = User::orderBy('company_name')->paginate(6);
-		$company = Company::where('company_name', '=', Auth::user()->company_name)->first();
+		if ( Auth::user()->account_type == "Z" ) {
+			$users = User::where('account_status', '=', 'enabled')->orderBy('company_name')->get();
+			$company = Company::where('company_name', '=', Auth::user()->company_name)->first();
 
-		return view('users.index')->with('users', $users)->with('company', $company);
+			return view('users.index')->with('users', $users)->with('company', $company);
+		} else {
+			return redirect()->route('users.list', Auth::user()->company_name);
+		}
     }
 
 	public function list($company_name)

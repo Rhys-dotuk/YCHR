@@ -182,6 +182,11 @@
 				</div>
 			</div>
 		</div>
+	<style>
+		.content-wrapper { height: 1050px;
+		}
+	</style>
+
 	@stop
 @else
 	@section('content')
